@@ -1,0 +1,18 @@
+version: "3.2"
+services:
+    mitglieder:
+        build:
+            context: "."
+        image: "mitglieder:latest"
+        ports:
+            - "8443:443"
+        volumes:
+            - type: "bind"
+              source: "./export/data"
+              target: "/srv/elgg_data"
+            - type: "bind"
+              source: "./export/site"
+              target: "/srv/http"
+            - type: "bind"
+              source: "./export/db"
+              target: "/db"
