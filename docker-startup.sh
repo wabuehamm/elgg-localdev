@@ -24,4 +24,4 @@ fi
 
 echo "Ready."
 
-sleep infinity
+tail -f /var/log/httpd/*log
