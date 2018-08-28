@@ -14,7 +14,12 @@ Clone this repository to a local directory:
     git clone https://github.com/wabuehamm/elgg-localdev.git
     cd elgg-localdev
 
-Export the site using the site's export script and untar the resulting export.tar.gz into this directory. Then run
+Export the site using the site's export script and untar the resulting export.tar.gz into this directory. Delete the file caches:
+
+    tar xzf export.tar.gz
+    rm -rf export/data/*cache*
+
+Then run
 
     docker-compose up -d --build
 
