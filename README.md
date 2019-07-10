@@ -5,7 +5,7 @@ Localdev for Elgg using Docker
 
 This Docker environment is used to start up a local elgg development environment for the Waldbuehne Heessen Members area using Docker.
 
-It relies on greyltc/lamp
+It relies on mariadb and alpine.
 
 ## Usage
 
@@ -27,11 +27,11 @@ and you will have a locally running web server on https://localhost:8443 with th
 
 To enter the container and test out things locally, run
 
-    docker exec -it mitglieder_mitglieder_1 bash
+    docker exec -it mitglieder_web_1 sh
 
 To see all apache logs run
 
-    docker logs -f mitglieder_mitglieder_1
+    docker logs -f mitglieder_web_1
 
 To stop and remove it again, run
 

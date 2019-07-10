@@ -1,18 +1,25 @@
 version: "3.2"
 services:
-    mitglieder:
-        build:
-            context: "."
-        image: "mitglieder:latest"
-        ports:
-            - "8443:443"
-        volumes:
-            - type: "bind"
-              source: "./export/data"
-              target: "/srv/elgg_data"
-            - type: "bind"
-              source: "./export/site"
-              target: "/srv/http"
-            - type: "bind"
-              source: "./export/db"
-              target: "/db"
+    db:
+      image: "mariadb:10"
+      environment: 
+        MYSQL_ROOT_PASSWORD: "secret"
+        MYSQL_DATABASE: "mitglieder"
+        MYSQL_USER: "mitglieder"
+        MYSQL_PASSWORD: "mitglieder"
+    web:
+      build:
+        context: "."
+      image: "mitglieder-web:latest"
+      volumes:
+        - type: "bind"
+          source: "./export/site"
+          target: "/var/www/localhost/htdocs"
+        - type: "bind"
+          source: "./export/data"
+          target: "/srv/elgg_data"
+        - type: "bind"
+          source: "./export/db"
+          target: "/db"
+      ports:
+        - "8443:8443"
