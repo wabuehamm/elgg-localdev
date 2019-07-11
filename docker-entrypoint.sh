@@ -4,9 +4,14 @@ echo "Waiting for db to come up"
 
 wait4ports tcp://db:3306
 
-echo "Loading database"
+EXISTING_TABLES=`mysql --user=mitglieder --password=mitglieder --host=db --protocol=tcp --database=mitglieder --silent --skip-column-names --execute='show tables' | wc -l`
 
-mysql --user=mitglieder --password=mitglieder --host=db --protocol=tcp --database=mitglieder --execute='source /db/dump.sql' 
+if [ $EXISTING_TABLES -eq 0 ]
+then
+    echo "Loading database"
+
+    mysql --user=mitglieder --password=mitglieder --host=db --protocol=tcp --database=mitglieder --execute='source /db/dump.sql' 
+fi
 
 echo "Recreating certificate"
 

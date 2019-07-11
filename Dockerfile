@@ -22,6 +22,10 @@ RUN sed -i -re "s/AllowOverride None/AllowOverride All/gi" /etc/apache2/httpd.co
 
 RUN sed -i -re "s/^#LoadModule rewrite_module(.*)/LoadModule rewrite_module\1/gi" /etc/apache2/httpd.conf
 
+# Enable xdebug
+
+COPY xdebug.ini /etc/php7/conf.d/xdebug.ini
+
 # Install entrypoint script
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh

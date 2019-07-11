@@ -21,7 +21,7 @@ Export the site using the site's export script and untar the resulting export.ta
 
 Then run
 
-    docker-compose up -d --build
+    docker-compose up -d
 
 and you will have a locally running web server on https://localhost:8443 with the current state of the member area.
 
