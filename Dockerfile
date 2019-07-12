@@ -4,7 +4,7 @@ FROM alpine:3.10
 
 RUN apk update && \
     apk add apache2-ssl && \
-    apk add php7-apache2 php7-gd php7-pdo_mysql php7-json php7-xml php7-mbstring php7-session php7-curl php7-simplexml php7-ctype php7-dom && \
+    apk add php7-apache2 php7-gd php7-pdo_mysql php7-json php7-xml php7-mbstring php7-session php7-curl php7-simplexml php7-ctype php7-dom php7-iconv && \
     apk add php7-pecl-xdebug && \
     apk add wait4ports && \
     apk add mariadb-client && \
