@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.7"
 services:
     db:
       image: "mariadb:10"
@@ -12,14 +12,8 @@ services:
         context: "."
       image: "mitglieder-web:latest"
       volumes:
-        - type: "bind"
-          source: "./export/site"
-          target: "/var/www/localhost/htdocs"
-        - type: "bind"
-          source: "./export/data"
-          target: "/srv/elgg_data"
-        - type: "bind"
-          source: "./export/db"
-          target: "/db"
+        - "./export/site:/var/www/localhost/htdocs:delegated"
+        - "./export/data:/srv/elgg_data:delegated"
+        - "./export/db:/db:delegated"
       ports:
         - "8443:8443"

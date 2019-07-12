@@ -3,7 +3,7 @@ FROM alpine:3.10
 # Install required packages
 
 RUN apk update && \
-    apk add apache2-ssl && \
+    apk add apache2-ssl apache2-ctl && \
     apk add php7-apache2 php7-gd php7-pdo_mysql php7-json php7-xml php7-mbstring php7-session php7-curl php7-simplexml php7-ctype php7-dom php7-iconv && \
     apk add php7-pecl-xdebug && \
     apk add wait4ports && \
@@ -24,7 +24,10 @@ RUN sed -i -re "s/^#LoadModule rewrite_module(.*)/LoadModule rewrite_module\1/gi
 
 # Enable xdebug
 
-COPY xdebug.ini /etc/php7/conf.d/xdebug.ini
+RUN rm /etc/php7/conf.d/xdebug.ini
+COPY xdebug.ini /etc/php7/xdebug.ini
+COPY xdebugctl.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/xdebugctl.sh
 
 # Install entrypoint script
 

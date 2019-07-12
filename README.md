@@ -36,3 +36,13 @@ To see all apache logs run
 To stop and remove it again, run
 
     docker-compose down
+
+## Xdebug
+
+The environment has batteries included for debugging Elgg scripts with Xdebug. By default, this is disabled because of performance reasons. To enable it, run:
+
+    docker-compose exec web xdebugctl.sh on
+
+To disable it again:
+
+    docker-compose exec web xdebugctl.sh off
