@@ -23,7 +23,11 @@ Then run
 
     docker-compose up -d
 
-and you will have a locally running web server on https://localhost:8443 with the current state of the member area.
+The app will listen to the host "web" on port 8443. Please add a new entry to your hosts file with 127.0.0.1 as the target ip:
+
+    web 127.0.0.1
+
+and you will have a locally running web server on https://web:8443 with the current state of the member area.
 
 To enter the container and test out things locally, run
 
