@@ -7,14 +7,13 @@ services:
         MYSQL_DATABASE: "mitglieder"
         MYSQL_USER: "mitglieder"
         MYSQL_PASSWORD: "mitglieder"
-    web:
-      build:
-        context: "."
-      image: "mitglieder-web:latest"
       volumes:
-        - "./export/site:/var/www/localhost/htdocs:cached"
-        - "./export/data:/srv/elgg_data:cached"
-        - "./export/db:/db:cached"
+        - "./db:/var/lib/mysql"
+    web:
+      image: "wabuehamm/web.members:latest"
+      volumes:
+        - "./site:/var/www/localhost/htdocs:cached"
+        - "./data:/srv/elgg_data:cached"
       ports:
         - "8443:8443"
     selenium-hub:

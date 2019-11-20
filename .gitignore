@@ -1,2 +1,5 @@
-export*
+data
+db
+site
 selenium
+export.tar.gz
