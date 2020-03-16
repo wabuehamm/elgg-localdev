@@ -7,8 +7,10 @@ services:
         MYSQL_DATABASE: "mitglieder"
         MYSQL_USER: "mitglieder"
         MYSQL_PASSWORD: "mitglieder"
+      ports: 
+        - "3306:3306"
       volumes:
-        - "./db:/var/lib/mysql"
+        - "./db:/var/lib/mysql:cached"
     web:
       image: "wabuehamm/web.members:latest"
       volumes:
