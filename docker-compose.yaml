@@ -1,7 +1,7 @@
 version: "3.7"
 services:
     db:
-      image: "mariadb:10"
+      image: "mariadb:10.4.12"
       environment: 
         MYSQL_ROOT_PASSWORD: "secret"
         MYSQL_DATABASE: "mitglieder"
@@ -18,23 +18,3 @@ services:
         - "./data:/srv/elgg_data:cached"
       ports:
         - "8443:8443"
-    selenium-hub:
-      image: "selenium/hub:3.141.59-titanium"
-      ports:
-        - "4444:4444"
-    selenium-chrome:
-      image: "selenium/node-chrome-debug:3.141.59-titanium"
-      environment: 
-        HUB_HOST: "selenium-hub"
-      ports:
-        - "5901:5900"
-      volumes: 
-      - "./selenium:/home/seluser/Downloads"
-    selenium-firefox:
-      image: "selenium/node-firefox-debug:3.141.59-titanium"
-      environment: 
-        HUB_HOST: "selenium-hub"
-      ports:
-        - "5902:5900"
-      volumes: 
-      - "./selenium:/home/seluser/Downloads"
