@@ -1,7 +1,7 @@
 version: "3.7"
 services:
     db:
-      image: "mariadb:10.4.12"
+      image: "mariadb:10.5.9"
       environment: 
         MYSQL_ROOT_PASSWORD: "secret"
         MYSQL_DATABASE: "mitglieder"
@@ -12,7 +12,7 @@ services:
       volumes:
         - "./db:/var/lib/mysql:cached"
     web:
-      image: "wabuehamm/web.members:latest"
+      image: "ghcr.io/wabuehamm/web.members:latest"
       volumes:
         - "./site:/var/www/localhost/htdocs:cached"
         - "./data:/srv/elgg_data:cached"
