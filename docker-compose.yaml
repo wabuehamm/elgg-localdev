@@ -1,4 +1,3 @@
-version: "3.7"
 services:
     db:
       image: "docker.io/library/mariadb:10.5.9"
@@ -17,4 +16,4 @@ services:
         - "./site:/var/www/localhost/htdocs:cached"
         - "./data:/srv/elgg_data:cached"
       ports:
-        - "8443:8443"
+        - "${PORT:-8443}:8443"
