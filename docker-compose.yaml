@@ -1,6 +1,6 @@
 services:
     db:
-      image: "docker.io/library/mariadb:10.5.9"
+      image: "docker.io/library/mariadb:11"
       environment: 
         MYSQL_ROOT_PASSWORD: "secret"
         MYSQL_DATABASE: "mitglieder"
